@@ -1,5 +1,5 @@
-DATA_MEMBERS_URL = '../data/members.json'
-DATA_PAGES_URL = '../data/pages.json'
+DATA_MEMBERS_URL = 'data/members.json'
+DATA_PAGES_URL = 'data/pages.json'
 
 build = (klass)->
   jQuery("<div></div>").addClass klass

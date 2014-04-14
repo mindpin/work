@@ -2,9 +2,9 @@
 (function() {
   var DATA_MEMBERS_URL, DATA_PAGES_URL, Member, Page, build, icon;
 
-  DATA_MEMBERS_URL = '../data/members.json';
+  DATA_MEMBERS_URL = 'data/members.json';
 
-  DATA_PAGES_URL = '../data/pages.json';
+  DATA_PAGES_URL = 'data/pages.json';
 
   build = function(klass) {
     return jQuery("<div></div>").addClass(klass);
