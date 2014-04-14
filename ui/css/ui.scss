@@ -1,0 +1,86 @@
+@import 'mixins';
+@import 'html';
+@import 'layout';
+@import 'avatar';
+
+body {
+  h1 {
+    font-size:24px;
+    color:#2E424D;
+    border-bottom: solid 1px #ddd;
+    height:24px;line-height:24px;
+    padding-bottom:20px;
+    font-weight:normal;
+    margin:20px 0;
+    i {
+      margin-right:10px;
+    }
+  }
+
+  a {color:#159BC9;}
+  // a {color:#cf5d4e;}
+}
+
+.page-header {
+  background-color:#333;
+  height:50px;line-height:50px;
+  margin-bottom:40px;
+  .ct {
+    width:960px;
+    margin:0 auto;
+    color:#999;
+  }
+}
+
+.page-intro {
+  padding:20px;
+  // background-color:#ffffda;
+  background-color:#FFFBE3;
+  border-radius:5px;
+  margin-bottom:40px;
+}
+
+.page-pages {
+  .pages {
+    .page {
+      margin-top:30px;
+      margin-bottom:30px;
+      margin-left:5%;
+      &:last-child {
+        margin-bottom:60px;
+      }
+
+      .title {font-weight:bold;}
+      .desc {color:#666;}
+      .url {
+        i {margin-right:5px;color:#009800;}
+      }
+    }
+  }
+}
+
+.page-members {
+  .members {
+    margin-top:40px;
+
+    .member {
+      height:280px;
+      float:left;
+      margin-right:30px;
+      width:25%;
+      margin-left:5%;
+
+      font-size:14px;
+
+      .avatar {margin-bottom:20px;}
+      .email i {margin-right:5px;color:#777;}
+      .weibo i {margin-right:5px;color:#E6162D;}
+      .zhihu i {
+        width:14px;height:14px;
+        background:url(../images/zhihu-icon.png) no-repeat;
+        margin-right:5px;position:relative;
+        top:2px;
+      }
+    }
+  }
+}

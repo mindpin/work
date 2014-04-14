@@ -1,0 +1,108 @@
+@charset "UTF-8";
+body {
+  background-color: #fff;
+  padding: 0;
+  margin: 0;
+  font-family: helvetica, arial, 微软雅黑;
+  font-size: 16px;
+  line-height: 1.5em;
+  color: #333; }
+
+.clearfix {
+  clear: both; }
+
+.bold {
+  font-weight: bold; }
+
+body > .page-content {
+  width: 960px;
+  margin: 0 auto; }
+
+.pie.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+  font-size: 0;
+  line-height: 0; }
+  .pie.avatar img {
+    width: 60px;
+    height: 60px;
+    border-radius: 100px; }
+  .pie.avatar.bordered {
+    border: solid 1px #ddd;
+    padding: 2px; }
+  .pie.avatar.s100 {
+    width: 100px;
+    height: 100px; }
+    .pie.avatar.s100 img {
+      width: 100px;
+      height: 100px; }
+
+body h1 {
+  font-size: 24px;
+  color: #2E424D;
+  border-bottom: solid 1px #ddd;
+  height: 24px;
+  line-height: 24px;
+  padding-bottom: 20px;
+  font-weight: normal;
+  margin: 20px 0; }
+  body h1 i {
+    margin-right: 10px; }
+body a {
+  color: #159BC9; }
+
+.page-header {
+  background-color: #333;
+  height: 50px;
+  line-height: 50px;
+  margin-bottom: 40px; }
+  .page-header .ct {
+    width: 960px;
+    margin: 0 auto;
+    color: #999; }
+
+.page-intro {
+  padding: 20px;
+  background-color: #FFFBE3;
+  border-radius: 5px;
+  margin-bottom: 40px; }
+
+.page-pages .pages .page {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 5%; }
+  .page-pages .pages .page:last-child {
+    margin-bottom: 60px; }
+  .page-pages .pages .page .title {
+    font-weight: bold; }
+  .page-pages .pages .page .desc {
+    color: #666; }
+  .page-pages .pages .page .url i {
+    margin-right: 5px;
+    color: #009800; }
+
+.page-members .members {
+  margin-top: 40px; }
+  .page-members .members .member {
+    height: 280px;
+    float: left;
+    margin-right: 30px;
+    width: 25%;
+    margin-left: 5%;
+    font-size: 14px; }
+    .page-members .members .member .avatar {
+      margin-bottom: 20px; }
+    .page-members .members .member .email i {
+      margin-right: 5px;
+      color: #777; }
+    .page-members .members .member .weibo i {
+      margin-right: 5px;
+      color: #E6162D; }
+    .page-members .members .member .zhihu i {
+      width: 14px;
+      height: 14px;
+      background: url(../images/zhihu-icon.png) no-repeat;
+      margin-right: 5px;
+      position: relative;
+      top: 2px; }

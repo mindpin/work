@@ -1,0 +1,49 @@
+!!!
+%html{:lang => :zh}
+  %head
+    %meta{:'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8'}
+    %title MINDPIN Team Work Page
+    %link{:media => 'screen', :rel => 'stylesheet', :type => 'text/css', :href => 'ui/css/ui.css'}
+    %link{:media => 'screen', :rel => 'stylesheet', :type => 'text/css', :href => 'ui/css/font-awesome.min.css'}
+  %body
+    .page-header
+      .ct MINDPIN Team Work Page
+
+    .page-content
+      .page-intro
+        %span 团队需要一个信息汇总页面，于是就放在这里了。目的很简单，希望能通过这个页面的导航找到团队工作相关的各种东西，不至于到处乱翻。页面是放在 github 的，域名是自己的。如果有任何意见建议可以告诉 ben7th 让他改。
+
+      .page-pages
+        %h1
+          %i.fa.fa-external-link-square
+          %span 常用页面
+        .pages
+        .clearfix
+
+      .page-members
+        %h1
+          %i.fa.fa-user
+          %span 团队成员
+        .members
+        .clearfix
+
+      .page-tools
+        %h1
+          %i.fa.fa-cutlery
+          %span 自己开发的工具集
+
+      .page-web-addons
+        %h1
+          %i.fa.fa-lightbulb-o
+          %span 浏览器插件
+
+      .page-sites
+        %h1
+          %i.fa.fa-coffee
+          %span 常用网站
+
+    .page-foot
+
+
+    %script{:type => 'text/javascript', :src => 'ui/lib/jquery-2.1.0.min.js'}
+    %script{:type => 'text/javascript', :src => 'ui/ui.js'}
