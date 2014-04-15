@@ -69,11 +69,15 @@ body a {
   margin-bottom: 40px; }
 
 .page-pages .pages .page {
+  border-bottom: dashed 1px #ddd;
+  padding-bottom: 30px;
   margin-top: 30px;
   margin-bottom: 30px;
   margin-left: 5%; }
   .page-pages .pages .page:last-child {
-    margin-bottom: 60px; }
+    margin-bottom: 60px;
+    padding-bottom: 0;
+    border-bottom: 0 none; }
   .page-pages .pages .page .title {
     font-weight: bold; }
   .page-pages .pages .page .desc {
@@ -81,6 +85,8 @@ body a {
   .page-pages .pages .page .url i {
     margin-right: 5px;
     color: #009800; }
+  .page-pages .pages .page .github i {
+    margin-right: 5px; }
 
 .page-members .members {
   margin-top: 40px; }

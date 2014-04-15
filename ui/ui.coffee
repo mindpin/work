@@ -1,5 +1,4 @@
 DATA_MEMBERS_URL = 'data/members.json'
-DATA_PAGES_URL = 'data/pages.json'
 
 build = (klass)->
   jQuery("<div></div>").addClass klass
@@ -63,44 +62,5 @@ class Member
           member = new Member obj
           member.render()
 
-class Page
-  constructor: (obj)->
-    @title = obj.title
-    @desc = obj.desc
-    @url = obj.url
-    @github = obj.github
-
-    @$pages = jQuery('.page-pages .pages')
-
-  render: ->
-    @$elm = build 'page'
-      .appendTo @$pages
-      .hide()
-      .fadeIn()
-
-    @$title = build 'title'
-      .html @title
-      .appendTo @$elm
-
-    @$desc = build 'desc'
-      .html @desc
-      .appendTo @$elm
-
-    @$url = build 'url'
-      .append icon 'arrow-circle-right'
-      .append "<a href='#{@url}' target='_blank'>#{@url}</a>"
-      .appendTo @$elm
-
-  @load_data: ->
-    jQuery.ajax
-      url : DATA_PAGES_URL
-      type : 'GET'
-      dataType : 'json'
-      success : (res)=>
-        for obj in res
-          page = new Page obj
-          page.render()
-
 jQuery ->
-  Page.load_data()
   Member.load_data()

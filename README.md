@@ -3,7 +3,7 @@ work
 
 scss --watch .
 
-coffee --watch --compile ui/*.coffee
+coffee --watch --compile */*.coffee
 
 watch haml *.haml *.html
 

@@ -43,17 +43,26 @@ body {
 .page-pages {
   .pages {
     .page {
+      border-bottom:dashed 1px #ddd;
+      padding-bottom:30px;
+
       margin-top:30px;
       margin-bottom:30px;
       margin-left:5%;
       &:last-child {
         margin-bottom:60px;
+
+        padding-bottom:0;
+        border-bottom:0 none;
       }
 
       .title {font-weight:bold;}
       .desc {color:#666;}
       .url {
         i {margin-right:5px;color:#009800;}
+      }
+      .github {
+        i {margin-right:5px;}
       }
     }
   }
