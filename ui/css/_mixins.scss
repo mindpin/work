@@ -1,6 +1,16 @@
-@mixin transform($string){
+@mixin transform($string) {
   -webkit-transform: $string;
   -moz-transform:    $string;
   -ms-transform:     $string;
   -o-transform:      $string;
+}
+
+@mixin box-sizing($string) {
+  box-sizing: $string;
+  -moz-box-sizing: $string;
+  -webkit-box-sizing: $string;
+}
+
+@mixin border-box {
+  @include box-sizing(border-box);
 }

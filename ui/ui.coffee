@@ -1,10 +1,21 @@
 DATA_MEMBERS_URL = 'data/members.json'
+DATA_SERVERS_URL = 'data/servers.json'
 
 build = (klass)->
   jQuery("<div></div>").addClass klass
 
 icon = (klass)->
   jQuery("<i></i>").addClass "fa fa-#{klass}"
+
+load_data = (url, klass)->
+  jQuery.ajax
+    url : url
+    type : 'GET'
+    dataType : 'json'
+    success : (res)->
+      for obj in res
+        o = new klass obj
+        o.render()
 
 class Member
   constructor: (obj)->
@@ -51,16 +62,38 @@ class Member
         .append "<a href='#{@zhihu}' target='_blank'>#{@zhihu}</a>"
         .appendTo @$elm
 
+class Server
+  constructor: (obj)->
+    @id = obj.id
+    @name = obj.name
+    @nickname = obj.nickname
+    @location = obj.location
+    @ip = obj.ip
 
-  @load_data: ->
-    jQuery.ajax
-      url : DATA_MEMBERS_URL
-      type : 'GET'
-      dataType : 'json'
-      success : (res)=>
-        for obj in res
-          member = new Member obj
-          member.render()
+    @$servers = jQuery('.page-servers .servers')
+
+  render: ->
+    @$elm = build 'server'
+      .appendTo @$servers
+      .hide()
+      .fadeIn()
+
+    @$name = build 'name'
+      .html @name
+      .appendTo @$elm
+
+    @$nickname = build 'nickname'
+      .html @nickname
+      .appendTo @$elm
+
+    @$location = build 'location'
+      .html @location
+      .appendTo @$elm
+
+    @$ip = build 'ip'
+      .html @ip
+      .appendTo @$elm
 
 jQuery ->
-  Member.load_data()
+  load_data DATA_MEMBERS_URL, Member
+  load_data DATA_SERVERS_URL, Server

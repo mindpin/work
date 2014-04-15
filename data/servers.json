@@ -1,0 +1,30 @@
+[
+  {
+    "id": "server-1",
+    "name": "阿里云服务器",
+    "nickname": "山茶花",
+    "location": "浙江杭州",
+    "ip": "42.120.41.92"
+  },
+  {
+    "id": "server-1",
+    "name": "盛大云服务器",
+    "nickname": "布谷鸟",
+    "location": "北京",
+    "ip": "211.101.1.178"
+  },
+  {
+    "id": "server-2",
+    "name": "Linode Server",
+    "nickname": "三叶草",
+    "location": "日本东京",
+    "ip": "106.186.119.248"
+  },
+  {
+    "id": "server-4",
+    "name": "西安卫工服务器",
+    "nickname": "灰喜鹊",
+    "location": "陕西西安",
+    "ip": "124.115.26.249"
+  }
+]

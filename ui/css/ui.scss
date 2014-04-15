@@ -19,6 +19,7 @@ body {
 
   a {color:#159BC9;}
   // a {color:#cf5d4e;}
+  // a {color:#2A70E8;}
 }
 
 .page-header {
@@ -30,6 +31,10 @@ body {
     margin:0 auto;
     color:#999;
   }
+}
+
+.page-content {
+  margin-bottom:120px !important;
 }
 
 .page-intro {
@@ -89,6 +94,45 @@ body {
         background:url(../images/zhihu-icon.png) no-repeat;
         margin-right:5px;position:relative;
         top:2px;
+      }
+    }
+  }
+}
+
+.page-servers {
+  .servers {
+    .server {
+      float:left;
+      width:220px;
+      height:145px;
+      margin-left:20px;margin-bottom:20px;
+      background-color:#2A70E8;
+      color:white;
+      border-radius:5px;
+      padding:15px 20px;
+      @include border-box;
+      overflow:hidden;
+      position:relative;
+
+      .name {font-weight:normal;color:rgba(white, 0.8);
+        font-size: 14px;}
+      .location {
+        background-color:#0957DB;
+        position:absolute;
+        bottom:34px;left:0;right:0;
+        padding:0 20px;
+        font-size:12px;
+        color:rgba(white, 0.8);
+        padding-top:10px;
+      }
+      .ip {
+        background-color:#0957DB;
+        position:absolute;
+        bottom:0;left:0;right:0;
+        padding:0 20px;
+        font-size:18px;
+        height:24px;line-height:24px;
+        padding-bottom:10px;
       }
     }
   }
