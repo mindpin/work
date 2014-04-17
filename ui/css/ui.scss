@@ -34,7 +34,7 @@ body {
 }
 
 .page-content {
-  margin-bottom:120px !important;
+  padding-bottom:120px !important;
 }
 
 .page-intro {
@@ -101,6 +101,17 @@ body {
 
 .page-servers {
   .servers {
+    a.server {
+      text-decoration:none;
+      position:relative;
+      top:0;
+      @include transition(all 0.1s ease-in);
+
+      &:hover {
+        top:-5px;
+      }
+    }
+
     .server {
       float:left;
       width:220px;
@@ -133,6 +144,106 @@ body {
         font-size:18px;
         height:24px;line-height:24px;
         padding-bottom:10px;
+        font-family:Georgia;
+      }
+    }
+  }
+}
+
+// -------------
+
+body.servers {
+  background-color:#2A70E8;
+  color:white;
+
+  .page-content {
+    position:relative;
+  }
+
+  .page-content > i.cloud {
+    font-size:300px;
+    position:absolute;
+    left:-160px;
+    top:350px;
+    color:rgba(white, 0.1);
+  }
+
+  .page-server-detail {
+    z-index:1;
+    float:left;
+    margin-top:100px;
+    width:360px;
+
+    .name {
+      color:rgba(white, 0.8);
+      font-size:32px;
+      height:48px;line-height:48px;
+      margin-bottom:10px;
+    }
+    .nickname {
+      font-size:32px;
+      height:48px;line-height:48px;
+      margin-bottom:30px;
+    }
+    .ip {
+      font-size:48px;
+      font-family:Georgia;
+      height:64px;line-height:64px;
+      margin-top:30px;
+      margin-bottom:20px;
+    }
+    .location {
+      font-size:24px;
+      color:rgba(white, 0.8);
+      margin-bottom:20px;
+    }
+    .os {
+      font-size:24px;
+      color:rgba(white, 0.8);
+      margin-bottom:50px;
+    }
+    a.manage-site {
+      display:block;
+      background-color:white;
+      color:#6A9BEF;
+      width:180px;
+      text-decoration:none;
+      height:48px;line-height:48px;
+      text-align:center;
+      border-radius:100px;
+      font-size:20px;
+      font-weight:bold;
+      i {
+        margin-right:10px;
+      }
+    }
+  }
+  .page-server-services {
+    float:left;
+    margin-top:100px;
+    width:600px;
+    .service {
+      color:rgba(white, 0.8);
+      border-radius:5px;
+      padding: 10px 20px;
+      background-color:#0957DB;
+      overflow:hidden;
+
+      .name{margin-bottom:5px;
+        color:white;
+      }
+      .url, .github {
+        margin-bottom:5px;
+        i {margin-right:10px;}
+        a {
+          color:rgba(white, 0.8);
+        }
+      }
+      .memo {
+        margin:10px -20px -10px;
+        padding:10px 20px;
+        background-color:rgba(black, 0.1);
+        font-size:14px;
       }
     }
   }

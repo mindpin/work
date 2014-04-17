@@ -1,30 +1,37 @@
 [
   {
-    "id": "server-1",
+    "id": "server-aliyun",
     "name": "阿里云服务器",
     "nickname": "山茶花",
     "location": "浙江杭州",
-    "ip": "42.120.41.92"
+    "ip": "42.120.41.92",
+    "manage_site": "http://www.aliyun.com/",
+    "os": "RHEL 5.4 64bit"
   },
   {
-    "id": "server-1",
+    "id": "server-sdyun",
     "name": "盛大云服务器",
     "nickname": "布谷鸟",
     "location": "北京",
-    "ip": "211.101.1.178"
+    "ip": "211.101.1.178",
+    "manage_site": "http://www.grandcloud.cn/",
+    "os": "RHEL 6.2 64bit"
   },
   {
-    "id": "server-2",
+    "id": "server-linode",
     "name": "Linode Server",
     "nickname": "三叶草",
     "location": "日本东京",
-    "ip": "106.186.119.248"
+    "ip": "106.186.119.248",
+    "manage_site": "https://www.linode.com/",
+    "os": "Debian 7.4 64bit"
   },
   {
-    "id": "server-4",
+    "id": "server-xian",
     "name": "西安卫工服务器",
     "nickname": "灰喜鹊",
     "location": "陕西西安",
-    "ip": "124.115.26.249"
+    "ip": "124.115.26.249",
+    "os": "SLES 10 32bit"
   }
 ]

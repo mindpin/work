@@ -5,6 +5,13 @@
   -o-transform:      $string;
 }
 
+@mixin transition($string) {
+  -webkit-transition: $string;
+  -moz-transition:    $string;
+  -ms-transition:     $string;
+  -o-transition:      $string;
+}
+
 @mixin box-sizing($string) {
   box-sizing: $string;
   -moz-box-sizing: $string;

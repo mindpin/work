@@ -1,0 +1,18 @@
+[
+  {
+    "id": "service-mindmap",
+    "server_id": "server-aliyun",
+    "name": "思维导图服务",
+    "url": "http://tu.mindpin.com",
+    "github": "https://github.com/ben7th/pin-2010",
+    "memo": "服务器上实际部署的版本和目前版本库中的代码版本差异较大，将来需要花时间检查。" 
+  },
+  {
+    "id": "service-mindpin",
+    "server_id": "server-sdyun",
+    "name": "MINDPIN",
+    "url": "http://www.mindpin.com",
+    "github": "https://github.com/mindpin/eshare",
+    "memo": "inhouse 版的 eShare 是从这个工程拆分出去的。代码逻辑上有区别。" 
+  }
+]

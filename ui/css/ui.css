@@ -63,7 +63,7 @@ body a {
     color: #999; }
 
 .page-content {
-  margin-bottom: 120px !important; }
+  padding-bottom: 120px !important; }
 
 .page-intro {
   padding: 20px;
@@ -116,6 +116,16 @@ body a {
       position: relative;
       top: 2px; }
 
+.page-servers .servers a.server {
+  text-decoration: none;
+  position: relative;
+  top: 0;
+  -webkit-transition: all 0.1s ease-in;
+  -moz-transition: all 0.1s ease-in;
+  -ms-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in; }
+  .page-servers .servers a.server:hover {
+    top: -5px; }
 .page-servers .servers .server {
   float: left;
   width: 220px;
@@ -155,4 +165,86 @@ body a {
     font-size: 18px;
     height: 24px;
     line-height: 24px;
-    padding-bottom: 10px; }
+    padding-bottom: 10px;
+    font-family: Georgia; }
+
+body.servers {
+  background-color: #2A70E8;
+  color: white; }
+  body.servers .page-content {
+    position: relative; }
+  body.servers .page-content > i.cloud {
+    font-size: 300px;
+    position: absolute;
+    left: -160px;
+    top: 350px;
+    color: rgba(255, 255, 255, 0.1); }
+  body.servers .page-server-detail {
+    z-index: 1;
+    float: left;
+    margin-top: 100px;
+    width: 360px; }
+    body.servers .page-server-detail .name {
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 32px;
+      height: 48px;
+      line-height: 48px;
+      margin-bottom: 10px; }
+    body.servers .page-server-detail .nickname {
+      font-size: 32px;
+      height: 48px;
+      line-height: 48px;
+      margin-bottom: 30px; }
+    body.servers .page-server-detail .ip {
+      font-size: 48px;
+      font-family: Georgia;
+      height: 64px;
+      line-height: 64px;
+      margin-top: 30px;
+      margin-bottom: 20px; }
+    body.servers .page-server-detail .location {
+      font-size: 24px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 20px; }
+    body.servers .page-server-detail .os {
+      font-size: 24px;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 50px; }
+    body.servers .page-server-detail a.manage-site {
+      display: block;
+      background-color: white;
+      color: #6A9BEF;
+      width: 180px;
+      text-decoration: none;
+      height: 48px;
+      line-height: 48px;
+      text-align: center;
+      border-radius: 100px;
+      font-size: 20px;
+      font-weight: bold; }
+      body.servers .page-server-detail a.manage-site i {
+        margin-right: 10px; }
+  body.servers .page-server-services {
+    float: left;
+    margin-top: 100px;
+    width: 600px; }
+    body.servers .page-server-services .service {
+      color: rgba(255, 255, 255, 0.8);
+      border-radius: 5px;
+      padding: 10px 20px;
+      background-color: #0957DB;
+      overflow: hidden; }
+      body.servers .page-server-services .service .name {
+        margin-bottom: 5px;
+        color: white; }
+      body.servers .page-server-services .service .url, body.servers .page-server-services .service .github {
+        margin-bottom: 5px; }
+        body.servers .page-server-services .service .url i, body.servers .page-server-services .service .github i {
+          margin-right: 10px; }
+        body.servers .page-server-services .service .url a, body.servers .page-server-services .service .github a {
+          color: rgba(255, 255, 255, 0.8); }
+      body.servers .page-server-services .service .memo {
+        margin: 10px -20px -10px;
+        padding: 10px 20px;
+        background-color: rgba(0, 0, 0, 0.1);
+        font-size: 14px; }

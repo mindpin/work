@@ -1,23 +1,50 @@
-DATA_MEMBERS_URL = 'data/members.json'
-DATA_SERVERS_URL = 'data/servers.json'
-
 build = (klass)->
   jQuery("<div></div>").addClass klass
 
 icon = (klass)->
   jQuery("<i></i>").addClass "fa fa-#{klass}"
 
-load_data = (url, klass)->
-  jQuery.ajax
-    url : url
-    type : 'GET'
-    dataType : 'json'
-    success : (res)->
-      for obj in res
-        o = new klass obj
-        o.render()
+link = (url)->
+  jQuery("<a href='#{url}' target='_blank'>#{url}</a>")
+
+class Data
+  # 查找某个类的所有对象，并按回调方法处理
+  @all = (klass, func)->
+    jQuery.ajax
+      url : klass.DATA_URL
+      type : 'GET'
+      dataType : 'json'
+      success : (res)->
+        for obj in res
+          o = new klass obj
+          func(o)
+
+  @one_by_id = (klass, id, func)->
+    jQuery.ajax
+      url : klass.DATA_URL
+      type : 'GET'
+      dataType : 'json'
+      success : (res)->
+        for obj in res
+          if obj.id == id
+            o = new klass obj
+            func o
+            break
+
+  @all_by_key_value = (klass, key, value, func)->
+    jQuery.ajax
+      url : klass.DATA_URL
+      type : 'GET'
+      dataType : 'json'
+      success : (res)->
+        for obj in res
+          if obj[key] == value
+            o = new klass obj
+            func o
 
 class Member
+  @DATA_URL = 'data/members.json'
+
   constructor: (obj)->
     @name = obj.name
     @realname = obj.realname
@@ -63,17 +90,25 @@ class Member
         .appendTo @$elm
 
 class Server
+  @DATA_URL = 'data/servers.json'
+
   constructor: (obj)->
     @id = obj.id
     @name = obj.name
     @nickname = obj.nickname
     @location = obj.location
     @ip = obj.ip
+    @os = obj.os
+
+    @manage_site = obj.manage_site
 
     @$servers = jQuery('.page-servers .servers')
 
+  url: ->
+    "servers.html?id=#{@id}"
+
   render: ->
-    @$elm = build 'server'
+    @$elm = jQuery "<a href='#{@url()}' class='server' target='_blank'></a>"
       .appendTo @$servers
       .hide()
       .fadeIn()
@@ -94,6 +129,82 @@ class Server
       .html @ip
       .appendTo @$elm
 
+  render_detail: ->
+    @$detail = jQuery('.page-server-detail')
+
+    @$detail.find '.name'
+      .html @name
+
+    @$detail.find '.nickname'
+      .html @nickname
+
+    @$detail.find '.ip'
+      .html @ip
+
+    @$detail.find '.location'
+      .html @location
+
+    @$detail.find '.os'
+      .html @os
+
+    if @manage_site
+      @$manage_site = jQuery "<a href='#{@manage_site}' class='manage-site' target='_blank'></a>"
+        .append icon 'arrow-right'
+        .append "前往管理"
+        .appendTo @$detail
+
+class Service
+  @DATA_URL = 'data/services.json'
+
+  constructor: (obj)->
+    @id = obj.id
+    @server_id = obj.server_id
+    @name = obj.name
+    @url = obj.url
+    @github = obj.github
+    @memo = obj.memo
+
+  render_for_server: ->
+    $services = jQuery('.page-server-services')
+
+    $service = build 'service'
+      .appendTo $services
+
+    $name = build 'name'
+      .html @name
+      .appendTo $service
+
+    if @url
+      $url = build 'url'
+      .append icon 'arrow-circle-right'
+      .append link @url
+      .appendTo $service
+
+    $github = build 'github'
+      .append icon 'github'
+      .append link @github
+      .appendTo $service
+
+    if @memo
+      $memo = build 'memo'
+        .html @memo
+        .appendTo $service
+
 jQuery ->
-  load_data DATA_MEMBERS_URL, Member
-  load_data DATA_SERVERS_URL, Server
+
+  if jQuery(document.body).hasClass 'servers'
+    match = location.search.match /id=([A-Za-z0-9-]+)/
+    server_id = match[1]
+
+    Data.one_by_id Server, server_id, (server)->
+      server.render_detail()
+
+    Data.all_by_key_value Service, "server_id", server_id, (service)->
+      service.render_for_server()
+
+  else
+    Data.all Member, (member)->
+      member.render()
+
+    Data.all Server, (server)->
+      server.render()
