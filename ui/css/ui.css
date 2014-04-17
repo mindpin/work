@@ -171,12 +171,12 @@ body a {
     position: absolute;
     height: 24px;
     line-height: 24px;
-    right: 0px;
+    right: 10px;
     top: 65px;
     font-size: 14px;
     background-color: #548CEB;
     padding: 0 7px;
-    border-radius: 3px 0 0 3px; }
+    border-radius: 3px; }
 
 body.servers {
   background-color: #2A70E8;
