@@ -17,66 +17,87 @@
   Data = (function() {
     function Data() {}
 
+    Data.cache = {};
+
+    Data.json_cache = function(klass, func) {
+      var url;
+      url = klass.DATA_URL;
+      if (this.cache[url]) {
+        return func(this.cache[url]);
+      } else {
+        return jQuery.ajax({
+          url: url,
+          type: 'GET',
+          dataType: 'json',
+          success: (function(_this) {
+            return function(res) {
+              _this.cache[url] = res;
+              return func(res);
+            };
+          })(this)
+        });
+      }
+    };
+
     Data.all = function(klass, func) {
-      return jQuery.ajax({
-        url: klass.DATA_URL,
-        type: 'GET',
-        dataType: 'json',
-        success: function(res) {
-          var o, obj, _i, _len, _results;
-          _results = [];
-          for (_i = 0, _len = res.length; _i < _len; _i++) {
-            obj = res[_i];
-            o = new klass(obj);
-            _results.push(func(o));
-          }
-          return _results;
+      return this.json_cache(klass, function(res) {
+        var o, obj, _i, _len, _results;
+        _results = [];
+        for (_i = 0, _len = res.length; _i < _len; _i++) {
+          obj = res[_i];
+          o = new klass(obj);
+          _results.push(func(o));
         }
+        return _results;
       });
     };
 
     Data.one_by_id = function(klass, id, func) {
-      return jQuery.ajax({
-        url: klass.DATA_URL,
-        type: 'GET',
-        dataType: 'json',
-        success: function(res) {
-          var o, obj, _i, _len, _results;
-          _results = [];
-          for (_i = 0, _len = res.length; _i < _len; _i++) {
-            obj = res[_i];
-            if (obj.id === id) {
-              o = new klass(obj);
-              func(o);
-              break;
-            } else {
-              _results.push(void 0);
-            }
+      return this.json_cache(klass, function(res) {
+        var o, obj, _i, _len, _results;
+        _results = [];
+        for (_i = 0, _len = res.length; _i < _len; _i++) {
+          obj = res[_i];
+          if (obj.id === id) {
+            o = new klass(obj);
+            func(o);
+            break;
+          } else {
+            _results.push(void 0);
           }
-          return _results;
         }
+        return _results;
       });
     };
 
     Data.all_by_key_value = function(klass, key, value, func) {
-      return jQuery.ajax({
-        url: klass.DATA_URL,
-        type: 'GET',
-        dataType: 'json',
-        success: function(res) {
-          var o, obj, _i, _len, _results;
-          _results = [];
-          for (_i = 0, _len = res.length; _i < _len; _i++) {
-            obj = res[_i];
-            if (obj[key] === value) {
-              o = new klass(obj);
-              _results.push(func(o));
-            } else {
-              _results.push(void 0);
-            }
+      return this.json_cache(klass, function(res) {
+        var o, obj, _i, _len, _results;
+        _results = [];
+        for (_i = 0, _len = res.length; _i < _len; _i++) {
+          obj = res[_i];
+          if (obj[key] === value) {
+            o = new klass(obj);
+            _results.push(func(o));
+          } else {
+            _results.push(void 0);
           }
-          return _results;
         }
+        return _results;
+      });
+    };
+
+    Data.count_by_key_value = function(klass, key, value, func) {
+      return this.json_cache(klass, function(res) {
+        var count, obj, _i, _len;
+        count = 0;
+        for (_i = 0, _len = res.length; _i < _len; _i++) {
+          obj = res[_i];
+          if (obj[key] === value) {
+            count += 1;
+          }
+        }
+        return func(count);
       });
     };
 
@@ -138,7 +159,12 @@
       this.$name = build('name').html(this.name).appendTo(this.$elm);
       this.$nickname = build('nickname').html(this.nickname).appendTo(this.$elm);
       this.$location = build('location').html(this.location).appendTo(this.$elm);
-      return this.$ip = build('ip').html(this.ip).appendTo(this.$elm);
+      this.$ip = build('ip').html(this.ip).appendTo(this.$elm);
+      return Data.count_by_key_value(Service, "server_id", this.id, (function(_this) {
+        return function(count) {
+          return _this.$services_count = build('services-count').html("" + count + " 个服务").appendTo(_this.$elm);
+        };
+      })(this));
     };
 
     Server.prototype.render_detail = function() {
@@ -164,22 +190,22 @@
       this.id = obj.id;
       this.server_id = obj.server_id;
       this.name = obj.name;
+      this.desc = obj.desc;
       this.url = obj.url;
       this.github = obj.github;
-      this.memo = obj.memo;
     }
 
     Service.prototype.render_for_server = function() {
-      var $github, $memo, $name, $service, $services, $url;
+      var $desc, $github, $name, $service, $services, $url;
       $services = jQuery('.page-server-services');
       $service = build('service').appendTo($services);
       $name = build('name').html(this.name).appendTo($service);
+      $desc = build('desc').html(this.desc).appendTo($service);
       if (this.url) {
         $url = build('url').append(icon('arrow-circle-right')).append(link(this.url)).appendTo($service);
       }
-      $github = build('github').append(icon('github')).append(link(this.github)).appendTo($service);
-      if (this.memo) {
-        return $memo = build('memo').html(this.memo).appendTo($service);
+      if (this.github) {
+        return $github = build('github').append(icon('github')).append(link(this.github)).appendTo($service);
       }
     };
 

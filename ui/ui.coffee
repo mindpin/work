@@ -8,39 +8,50 @@ link = (url)->
   jQuery("<a href='#{url}' target='_blank'>#{url}</a>")
 
 class Data
+  @cache = {}
+
+  @json_cache = (klass, func)->
+    url = klass.DATA_URL
+    if @cache[url]
+      func @cache[url]
+    else
+      jQuery.ajax
+        url : url
+        type : 'GET'
+        dataType : 'json'
+        success : (res)=>
+          @cache[url] = res
+          func res
+
   # 查找某个类的所有对象，并按回调方法处理
   @all = (klass, func)->
-    jQuery.ajax
-      url : klass.DATA_URL
-      type : 'GET'
-      dataType : 'json'
-      success : (res)->
-        for obj in res
-          o = new klass obj
-          func(o)
+    @json_cache klass, (res)->
+      for obj in res
+        o = new klass obj
+        func o
 
   @one_by_id = (klass, id, func)->
-    jQuery.ajax
-      url : klass.DATA_URL
-      type : 'GET'
-      dataType : 'json'
-      success : (res)->
-        for obj in res
-          if obj.id == id
-            o = new klass obj
-            func o
-            break
+    @json_cache klass, (res)->
+      for obj in res
+        if obj.id == id
+          o = new klass obj
+          func o
+          break
 
   @all_by_key_value = (klass, key, value, func)->
-    jQuery.ajax
-      url : klass.DATA_URL
-      type : 'GET'
-      dataType : 'json'
-      success : (res)->
-        for obj in res
-          if obj[key] == value
-            o = new klass obj
-            func o
+    @json_cache klass, (res)->
+      for obj in res
+        if obj[key] == value
+          o = new klass obj
+          func o
+
+  @count_by_key_value = (klass, key, value, func)->
+    @json_cache klass, (res)->
+      count = 0
+      for obj in res
+        if obj[key] == value
+          count += 1
+      func count
 
 class Member
   @DATA_URL = 'data/members.json'
@@ -129,6 +140,11 @@ class Server
       .html @ip
       .appendTo @$elm
 
+    Data.count_by_key_value Service, "server_id", @id, (count)=>
+      @$services_count = build 'services-count'
+        .html "#{count} 个服务"
+        .appendTo @$elm
+
   render_detail: ->
     @$detail = jQuery('.page-server-detail')
 
@@ -160,9 +176,9 @@ class Service
     @id = obj.id
     @server_id = obj.server_id
     @name = obj.name
+    @desc = obj.desc
     @url = obj.url
     @github = obj.github
-    @memo = obj.memo
 
   render_for_server: ->
     $services = jQuery('.page-server-services')
@@ -174,20 +190,20 @@ class Service
       .html @name
       .appendTo $service
 
+    $desc = build 'desc'
+      .html @desc
+      .appendTo $service
+
     if @url
       $url = build 'url'
       .append icon 'arrow-circle-right'
       .append link @url
       .appendTo $service
 
-    $github = build 'github'
-      .append icon 'github'
-      .append link @github
-      .appendTo $service
-
-    if @memo
-      $memo = build 'memo'
-        .html @memo
+    if @github
+      $github = build 'github'
+        .append icon 'github'
+        .append link @github
         .appendTo $service
 
 jQuery ->

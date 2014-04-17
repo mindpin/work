@@ -2,17 +2,123 @@
   {
     "id": "service-mindmap",
     "server_id": "server-aliyun",
-    "name": "思维导图服务",
+    "name": "思维导图",
+    "desc": "MINDPIN 最早的服务，提供在线思维导图工具。服务器上实际部署的版本和目前版本库中的代码版本差异较大，将来需要花时间检查。",
     "url": "http://tu.mindpin.com",
-    "github": "https://github.com/ben7th/pin-2010",
-    "memo": "服务器上实际部署的版本和目前版本库中的代码版本差异较大，将来需要花时间检查。" 
+    "github": "https://github.com/ben7th/pin-2010"
   },
+
   {
     "id": "service-mindpin",
     "server_id": "server-sdyun",
     "name": "MINDPIN",
+    "desc": "在线视频课程和JavaScript编程课程，也就是 eShare 的公网版。inhouse 版的 eShare 是从这个工程拆分出去的。代码逻辑上有区别。",
     "url": "http://www.mindpin.com",
-    "github": "https://github.com/mindpin/eshare",
-    "memo": "inhouse 版的 eShare 是从这个工程拆分出去的。代码逻辑上有区别。" 
+    "github": "https://github.com/mindpin/eshare"
+  },
+
+  {
+    "id": "service-eshare-verify",
+    "server_id": "server-sdyun",
+    "name": "eShare Verify",
+    "desc": "eShare inhouse 版本的验证服务",
+    "github": "https://github.com/mindpin/eshare-verify"
+  },
+
+  {
+    "id": "service-teamkn-web",
+    "server_id": "server-sdyun",
+    "name": "TEAMKN Web",
+    "desc": "TeamKn 的服务端。由于客户端开发停滞，这个服务目前基本已经废弃了。",
+    "github": "https://github.com/mobile-km/small-team-km-server"
+  },
+
+  {
+    "id": "service-publify-blog",
+    "server_id": "server-sdyun",
+    "name": "Publify Blog",
+    "desc": "kaid 基于 Publify 修改的博客服务。原本打算是用作知识分享的，测试一段时间，如果不合适再想别的方法。",
+    "url": "http://blog.4ye.me",
+    "github": "https://github.com/mindpin/publify"
+  },
+
+  {
+    "id": "service-android-4ye-release",
+    "server_id": "server-sdyun",
+    "name": "4ye Android Release",
+    "desc": "四叶草知识手册的正式版本服务端。版本库的 release 分支。参考 http://s.4ye.me/muzgIs",
+    "url": "http://4ye.mindpin.com",
+    "github": "https://github.com/mindpin/android-4ye-web"
+  },
+
+  {
+    "id": "service-android-4ye-evaluation",
+    "server_id": "server-sdyun",
+    "name": "4ye Android Evaluation",
+    "desc": "四叶草知识手册的评估版本服务端。版本库的 evaluation 分支。参考 http://s.4ye.me/muzgIs",
+    "url": "http://4ye-evaluation.mindpin.com",
+    "github": "https://github.com/mindpin/android-4ye-web"
+  },
+
+  {
+    "id": "service-oppia-proxy",
+    "server_id": "server-linode",
+    "name": "Oppia",
+    "desc": "部署在 GAE 的 Oppia 服务。通过此服务反向代理访问。",
+    "url": "http://teamkn.com"
+  },
+
+  {
+    "id": "service-docs",
+    "server_id": "server-linode",
+    "name": "团队文档 Docs",
+    "desc": "用来保存团队内部的服务器信息，部署方案等文档。支持 markdown 语法。",
+    "url": "http://docs.4ye.me",
+    "github": "https://github.com/mindpin/deploy-docs"
+  },
+
+  {
+    "id": "service-image",
+    "server_id": "server-linode",
+    "name": "图片上传 Image Service",
+    "desc": "用来保存图片便于外链，支持多尺寸图片缩放，支持直接粘贴上传。图片保存在阿里云OSS。<br/>同时，这个服务也是其他一些服务的依赖。",
+    "url": "http://img.4ye.me",
+    "github": "https://github.com/mindpin/image-service"
+  },
+
+  {
+    "id": "service-key-value",
+    "server_id": "server-linode",
+    "name": "通用键值对持久化/TAG标记服务",
+    "desc": "支持多个不同服务以键值对的形式持久化保存数据。同时提供标准化的TAG标注和搜索服务。",
+    "url": "http://key-value.4ye.me",
+    "github": "https://github.com/mindpin/kv_service"
+  },
+
+  {
+    "id": "service-short-url",
+    "server_id": "server-linode",
+    "name": "短网址 Short Url",
+    "desc": "用来缩短网址，便于转发扩散。",
+    "url": "http://s.4ye.me",
+    "github": "https://github.com/mindpin/short-url"
+  },
+
+  {
+    "id": "service-web-url-collector",
+    "server_id": "server-linode",
+    "name": "通用网页收藏服务",
+    "desc": "网页收藏工具所依赖的的数据服务。你问网页收藏工具是啥？还没开发出来。",
+    "url": "http://collect.4ye.me",
+    "github": "https://github.com/mindpin/web-url-collector"
+  },
+
+  {
+    "id": "service-web-url-collector",
+    "server_id": "server-xian",
+    "name": "eShare Inhouse Demo",
+    "desc": "eShare Inhouse 最新版的在线演示。",
+    "url": "http://124.115.26.249/",
+    "github": "https://github.com/mindpin/beikong-eshare"
   }
 ]
