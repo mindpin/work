@@ -17,26 +17,18 @@
   Data = (function() {
     function Data() {}
 
-    Data.cache = {};
-
     Data.json_cache = function(klass, func) {
-      var url;
-      url = klass.DATA_URL;
-      if (this.cache[url]) {
-        return func(this.cache[url]);
-      } else {
-        return jQuery.ajax({
-          url: url,
-          type: 'GET',
-          dataType: 'json',
-          success: (function(_this) {
-            return function(res) {
-              _this.cache[url] = res;
-              return func(res);
-            };
-          })(this)
-        });
-      }
+      return jQuery.ajax({
+        url: klass.DATA_URL,
+        type: 'GET',
+        dataType: 'json',
+        cache: true,
+        success: (function(_this) {
+          return function(res) {
+            return func(res);
+          };
+        })(this)
+      });
     };
 
     Data.all = function(klass, func) {

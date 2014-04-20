@@ -8,20 +8,14 @@ link = (url)->
   jQuery("<a href='#{url}' target='_blank'>#{url}</a>")
 
 class Data
-  @cache = {}
-
   @json_cache = (klass, func)->
-    url = klass.DATA_URL
-    if @cache[url]
-      func @cache[url]
-    else
-      jQuery.ajax
-        url : url
-        type : 'GET'
-        dataType : 'json'
-        success : (res)=>
-          @cache[url] = res
-          func res
+    jQuery.ajax
+      url : klass.DATA_URL
+      type : 'GET'
+      dataType : 'json'
+      cache: true
+      success : (res)=>
+        func res
 
   # 查找某个类的所有对象，并按回调方法处理
   @all = (klass, func)->
