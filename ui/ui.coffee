@@ -57,6 +57,7 @@ class Member
     @avatar = obj.avatar
     @weibo = obj.weibo
     @zhihu = obj.zhihu
+    @github = obj.github
 
     @$members = jQuery('.page-members .members')
 
@@ -92,6 +93,12 @@ class Member
       @$zhihu = build 'zhihu'
         .append icon 'zhihu'
         .append "<a href='#{@zhihu}' target='_blank'>#{@zhihu}</a>"
+        .appendTo @$elm
+
+    if @github
+      @$github = build 'github'
+        .append icon 'github'
+        .append "<a href='#{@github}' target='_blank'>#{@github}</a>"
         .appendTo @$elm
 
 class Server

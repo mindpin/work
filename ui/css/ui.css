@@ -115,6 +115,8 @@ body a {
       margin-right: 5px;
       position: relative;
       top: 2px; }
+    .page-members .members .member .github i {
+      margin-right: 6px; }
 
 .page-servers .servers a.server {
   text-decoration: none;

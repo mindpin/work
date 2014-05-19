@@ -107,6 +107,7 @@
       this.avatar = obj.avatar;
       this.weibo = obj.weibo;
       this.zhihu = obj.zhihu;
+      this.github = obj.github;
       this.$members = jQuery('.page-members .members');
     }
 
@@ -120,7 +121,10 @@
         this.$weibo = build('weibo').append(icon('weibo')).append("<a href='" + this.weibo + "' target='_blank'>" + this.weibo + "</a>").appendTo(this.$elm);
       }
       if (this.zhihu) {
-        return this.$zhihu = build('zhihu').append(icon('zhihu')).append("<a href='" + this.zhihu + "' target='_blank'>" + this.zhihu + "</a>").appendTo(this.$elm);
+        this.$zhihu = build('zhihu').append(icon('zhihu')).append("<a href='" + this.zhihu + "' target='_blank'>" + this.zhihu + "</a>").appendTo(this.$elm);
+      }
+      if (this.github) {
+        return this.$github = build('github').append(icon('github')).append("<a href='" + this.github + "' target='_blank'>" + this.github + "</a>").appendTo(this.$elm);
       }
     };
 
@@ -227,3 +231,5 @@
   });
 
 }).call(this);
+
+//# sourceMappingURL=ui.map

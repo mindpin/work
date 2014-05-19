@@ -3,7 +3,7 @@ work
 
 scss --watch .
 
-coffee --watch --compile */*.coffee
+coffee --watch --compile --map */*.coffee
 
 ruby watch_haml.rb .
 
